@@ -177,12 +177,20 @@ int Read(int nAioId, int nMaxBufferLength, struct kevent *event)
 		{
 			ErrorInfor("Read", ERROR_REMEVENT);
 		}
+
+		free(pData);
+		pData = NULL;
 		return 0;
 	}
 
 	//插入数据
-	RecvData(event->udata, pData, nDataSize);
-
+	if (!RecvData(event->udata, pData, nDataSize))
+	{
+		free(pData);
+		pData = NULL;
+		ErrorInfor("Read", ERROR_RECVDATA);
+		return 0;
+	}
 	return 1;
 }
 

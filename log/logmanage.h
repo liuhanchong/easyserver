@@ -68,6 +68,7 @@
 #define ERROR_GETFILE    ("获取文件失败")
 #define ERROR_RELINI     ("释放配置文件失败")
 #define ERROR_INSOCKET   ("插入SOCKET失败")
+#define ERROR_RECVDATA   ("接收数据失败")
 
 void DebugInfor(char *pDebug); /*在调试时，打印的一些运行时信息，当版本发布时候，此函数输出的信息会被屏蔽*/
 void LogInfor(char *pLog); /*日常运行情况的记录*/

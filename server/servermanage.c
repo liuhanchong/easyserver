@@ -173,6 +173,5 @@ int RecvData(SocketNode *pSocketNode, void *pData, int nDataSize)
 	}
 
 	pSocketNode->tmAccDateTime = time(NULL);
-	InsertRecvDataNode(pSocketNode->nClientSocket, pData, nDataSize);
-	return 1;
+	return InsertRecvDataNode(pSocketNode->nClientSocket, pData, nDataSize);
 }

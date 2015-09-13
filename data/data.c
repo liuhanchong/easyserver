@@ -218,19 +218,21 @@ int InsertDataNode(int nSocket, void *pData, int nDataSize, int nType)
 	pDataNode->nDataSize = nDataSize;
 
 	/*插入数据处理队列*/
+	int nReturn = 0;
 	if (nType == 1)
 	{
 		LockQueue(&data.recvDataList);
-		Insert(&data.recvDataList, pDataNode, 0);
+		nReturn = Insert(&data.recvDataList, pDataNode, 0);
 		UnlockQueue(&data.recvDataList);
 	}
 	else
 	{
 		LockQueue(&data.sendDataList);
-		Insert(&data.sendDataList, pDataNode, 0);
+		nReturn = Insert(&data.sendDataList, pDataNode, 0);
 		UnlockQueue(&data.sendDataList);
 	}
-	return 1;
+
+	return nReturn;
 }
 
 void *TestData(void *pData)
